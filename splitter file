@@ -1,0 +1,37 @@
+import java.io.*;
+public class splitter
+{
+public static void main (String[] args){
+try { byte b[]=new byte[10000000];
+int x=1,j=0;
+string s ="";
+InputstreamReader ins = new InputStreamReader(System.in);
+BufferedReader br = new BufferedReader(ins);
+
+System.out.println("Enter path");
+String path = br.readline();
+
+FileInputStream fis = new FileInputStream(path);
+int read_bytes;
+while (fis.available()!=0)
+{
+j=0;
+s="";
+if(x<=9){
+s=path+".00"+x;
+}
+else
+{ s=path+".0"+x;
+} 
+FileOutputStream fos =new FileOutputStream(s);
+while (j<=5000000 && fis.available()!=0 ){
+read_bytes = fis.read(b,0,10000);
+j=j+read_bytes;
+fos.write(b,0,read_bytes);
+}
+system.out.println("part"+x+"created");
+x++;
+}
+fis.close();
+}
+catch(Exception e){e.printStackTrace();}
